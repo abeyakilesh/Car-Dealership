@@ -1,0 +1,185 @@
+/* Variables */
+:root {
+    --primary-color: #c92a2a; /* Racing Red */
+    --dark-bg: #111111;
+    --light-bg: #f8f9fa;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Roboto', sans-serif;
+}
+
+/* General Layout */
+body {
+    font-family: var(--font-sans);
+    color: #333;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .navbar-brand {
+    font-family: var(--font-serif);
+}
+
+.logo-text {
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* Navbar */
+.navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: background-color 0.3s;
+}
+
+.bg-dark-transparent {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.nav-link {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    margin-left: 1rem;
+}
+
+.nav-link.active {
+    color: var(--primary-color) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin-top: -76px; /* Pull behind navbar */
+}
+
+.hero-title {
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.hero-subtitle {
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* Buttons */
+.custom-btn {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 12px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    border-radius: 0;
+    transition: all 0.3s;
+}
+
+.custom-btn:hover {
+    background-color: #a02020;
+    transform: translateY(-2px);
+}
+
+.btn-outline-dark {
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Section Styling */
+.section-title {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.title-underline {
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* Cards */
+.car-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.car-card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.features-list li {
+    font-size: 0.9rem;
+    color: #666;
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+}
+
+/* Forms */
+.form-control, .form-select {
+    border-radius: 0;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: none;
+    border-color: var(--primary-color);
+}
+
+/* Animations */
+.fade-in-up {
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ... (Keep all previous CSS from the first response) ... */
+
+/* --- ADD THESE NEW STYLES --- */
+
+/* Carousel Controls */
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: var(--primary-color); /* Red background for arrows */
+    padding: 20px;
+    background-size: 50%;
+}
+
+/* Ensure cards in carousel have equal height */
+.carousel-item .row {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+@media (max-width: 768px) {
+    /* Stack cards on mobile - we rely on the chunking logic in JS, 
+       but you might see 3 stacked cards per slide on mobile. 
+       To show 1 per slide on mobile requires complex JS resizing logic.
+       The current grid system will stack them nicely vertically in one slide. */
+}
