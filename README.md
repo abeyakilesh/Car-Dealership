@@ -62,7 +62,7 @@ Password : 1234
 
 ---
 ## Author
-Abey Akilesh 
+Abey Akilesh |
 Aspiring Frontend Developer | Tech Enthusiast
 
 
