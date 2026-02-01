@@ -29,7 +29,7 @@ This project demonstrates a premium UI/UX design, featuring a custom 3D javascri
 
 ## Project Structure
 
-```text
+```text 
 /project
 ├── index.html          # Landing page with 3D slider
 ├── about.html          # Brand heritage and history
