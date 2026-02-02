@@ -1,19 +1,54 @@
-/* Variables */
+/* =========================================
+   1. VARIABLES
+   ========================================= */
 :root {
     --primary-color: #c92a2a; /* Racing Red */
     --dark-bg: #111111;
     --light-bg: #f8f9fa;
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Roboto', sans-serif;
+    --nav-height: 76px; /* Essential for alignment math */
 }
 
-/* General Layout */
+/* =========================================
+   2. GLOBAL LAYOUT (FIXES FOOTER & TICKS)
+   ========================================= */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures body is always full screen height */
     font-family: var(--font-sans);
     color: #333;
     overflow-x: hidden;
+    background-color: white;
 }
 
+/* This targets the middle content. 
+   'flex: 1 0 auto' acts like a spring to push the footer down.
+*/
+main, 
+.flex-grow-1, 
+section.container.mt-5.pt-5 {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+    background-color: var(--dark-bg);
+    color: white;
+    padding: 2.5rem 0;
+    margin-top: auto;
+}
+
+/* =========================================
+   3. NAVBAR & TYPOGRAPHY
+   ========================================= */
 h1, h2, h3, .navbar-brand {
     font-family: var(--font-serif);
 }
@@ -24,8 +59,8 @@ h1, h2, h3, .navbar-brand {
     font-size: 1.5rem;
 }
 
-/* Navbar */
 .navbar {
+    height: var(--nav-height);
     padding-top: 1rem;
     padding-bottom: 1rem;
     transition: background-color 0.3s;
@@ -48,27 +83,39 @@ h1, h2, h3, .navbar-brand {
     color: var(--primary-color) !important;
 }
 
-/* Hero Section */
+/* =========================================
+   4. HERO SECTION (FIXES IMAGE HIDING UPWARD)
+   ========================================= */
 .hero-section {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+    position: relative;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
                 url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&q=80&w=1920');
     background-size: cover;
-    background-position: center;
+    background-position: center center;
+    
+    /* THE FIX: 
+       We pull the section UP behind the nav with negative margin,
+       THEN push the content DOWN with padding so it's perfectly centered.
+    */
     height: 100vh;
-    margin-top: -76px; /* Pull behind navbar */
+    margin-top: calc(var(--nav-height) * -1); 
+    padding-top: var(--nav-height); 
+    
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
 }
 
 .hero-title {
     font-weight: 700;
     letter-spacing: -2px;
+    font-size: clamp(3rem, 8vw, 5rem); /* Responsive font size */
 }
 
-.hero-subtitle {
-    font-weight: 300;
-    opacity: 0.9;
-}
-
-/* Buttons */
+/* =========================================
+   5. COMPONENTS (BUTTONS, CARDS, CAROUSEL)
+   ========================================= */
 .custom-btn {
     background-color: var(--primary-color);
     border: none;
@@ -77,23 +124,15 @@ h1, h2, h3, .navbar-brand {
     letter-spacing: 1px;
     font-size: 0.9rem;
     border-radius: 0;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .custom-btn:hover {
     background-color: #a02020;
     transform: translateY(-2px);
+    color: white;
 }
 
-.btn-outline-dark {
-    border-radius: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-/* Section Styling */
 .section-title {
     font-weight: 700;
     margin-bottom: 1rem;
@@ -105,81 +144,38 @@ h1, h2, h3, .navbar-brand {
     background-color: var(--primary-color);
 }
 
-/* Cards */
 .car-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
+    border-radius: 0;
 }
 
 .car-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
 }
 
-.car-card img {
-    height: 250px;
-    object-fit: cover;
+/* Carousel Red Arrows */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 50%;
+    background-size: 50%;
 }
 
-.features-list li {
-    font-size: 0.9rem;
-    color: #666;
-    border-bottom: 1px solid #eee;
-    padding: 8px 0;
-}
-
-/* Forms */
-.form-control, .form-select {
-    border-radius: 0;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-}
-
-.form-control:focus, .form-select:focus {
-    box-shadow: none;
-    border-color: var(--primary-color);
-}
-
-/* Animations */
+/* =========================================
+   6. ANIMATIONS
+   ========================================= */
 .fade-in-up {
-    animation: fadeInUp 1s ease-out;
+    animation: fadeInUp 1s ease-out forwards;
 }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* ... (Keep all previous CSS from the first response) ... */
-
-/* --- ADD THESE NEW STYLES --- */
-
-/* Carousel Controls */
-.carousel-control-prev, .carousel-control-next {
-    width: 5%;
-}
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: var(--primary-color); /* Red background for arrows */
-    padding: 20px;
-    background-size: 50%;
-}
-
-/* Ensure cards in carousel have equal height */
-.carousel-item .row {
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-@media (max-width: 768px) {
-    /* Stack cards on mobile - we rely on the chunking logic in JS, 
-       but you might see 3 stacked cards per slide on mobile. 
-       To show 1 per slide on mobile requires complex JS resizing logic.
-       The current grid system will stack them nicely vertically in one slide. */
 }

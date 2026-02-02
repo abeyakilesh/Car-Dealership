@@ -4,48 +4,48 @@ document.addEventListener('DOMContentLoaded', () => {
     const carData = [
         {
             id: 'gt-sport',
-            name: 'Veloce GT Sport',
-            price: '$145,000',
-            image: 'https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80&w=800',
+            name: 'GT Sport',
+            price: '₹145,000',
+            image: 'https://cdn.motor1.com/images/mgl/LRAQQ/s1/2019-ford-mustang-shelby-gt350.webp',
             desc: 'A twin-turbocharged V8 grand tourer designed for the open road. The GT Sport combines aggressive aerodynamics with a luxurious cabin.',
             specs: { acceleration: '3.2s', speed: '195 mph', power: '580 HP', engine: '4.0L V8 Twin-Turbo' }
         },
         {
             id: 'stradale',
-            name: 'Veloce Stradale',
-            price: '$220,000',
+            name: 'Stradale',
+            price: '₹220,000',
             image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&q=80&w=800',
             desc: 'Track-focused precision meeting street-legal luxury. Features a complete carbon fiber chassis and active aerodynamics.',
             specs: { acceleration: '2.8s', speed: '210 mph', power: '720 HP', engine: '5.2L V10 N/A' }
         },
         {
             id: 'electra',
-            name: 'Veloce Electra',
-            price: '$180,000',
-            image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800',
+            name: 'Electra',
+            price: '₹180,000',
+            image: 'https://imageio.forbes.com/specials-images/imageserve/5d2d75f74c687b00085cc8ab/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds',
             desc: 'The future of silence and speed. Pure electric performance with instant torque and a futuristic cockpit.',
             specs: { acceleration: '2.4s', speed: '180 mph', power: '1020 HP', engine: 'Tri-Motor Electric' }
         },
         {
             id: 'suv-corsa',
-            name: 'Veloce Corsa SUV',
-            price: '$130,000',
-            image: 'https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&fit=crop&q=80&w=800',
+            name: 'Corsa SUV',
+            price: '₹130,000',
+            image: 'https://catalog-management.s3.ap-south-1.amazonaws.com/htmobile1/mercedesbenz_gls-2024/images/exterior_mercedes-benz-gls-2024_front-left-side_600x400.jpg',
             desc: 'Dominance on any terrain. The Corsa SUV brings supercar performance to a spacious, family-friendly form factor.',
             specs: { acceleration: '3.6s', speed: '190 mph', power: '640 HP', engine: '4.0L V8 Turbo' }
         },
         {
             id: 'spyder',
-            name: 'Veloce Spyder',
-            price: '$260,000',
+            name: '918 Spyder',
+            price: '₹260,000',
             image: 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&q=80&w=800',
             desc: 'Infinite headroom. The Spyder offers an unfiltered auditory experience with its retractable hardtop.',
             specs: { acceleration: '3.0s', speed: '202 mph', power: '670 HP', engine: '3.8L Flat-6' }
         },
         {
             id: 'limo',
-            name: 'Veloce Royale',
-            price: '$350,000',
+            name: 'Rover SVJ',
+            price: '₹350,000',
             image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=800',
             desc: 'The pinnacle of executive luxury. Extended wheelbase, reclining rear seats, and a silent hybrid powertrain.',
             specs: { acceleration: '4.5s', speed: '155 mph', power: '500 HP', engine: '6.0L W12 Hybrid' }
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
 
-                    <a href="contact.html?model=${car.name}" class="btn btn-primary btn-lg w-100 custom-btn">Order This Vehicle</a>
+                    <a href="contact.html?model=${car.name}" class="btn btn-primary btn-lg w-100 custom-btn">Book an Appointment</a>
                 </div>
             `;
         } else {
@@ -171,3 +171,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
