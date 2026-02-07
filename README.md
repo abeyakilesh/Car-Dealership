@@ -12,7 +12,7 @@ This project demonstrates a premium UI/UX design, featuring a custom 3D javascri
 <img width="1792" height="1120" alt="image" src="https://github.com/user-attachments/assets/ac1c86d6-575a-49ec-939d-47b89f65d8f9" />
 <img width="1792" height="1120" alt="image" src="https://github.com/user-attachments/assets/68bfb91c-a1eb-4d0f-b966-75b4fed33490" />
 
-<img width="1792" height="1120" alt="image" src="https://github.com/user-attachments/assets/66f42194-d158-47ea-8c56-c8d42c161cd7" />
+<img width="1792" height="1120" alt="image" src="https://github.com/user-attachments/assets/66f42194-d158-47ea-8c56-c8d42c161cd7"  />
 <img width="1792" height="1120" alt="image" src="https://github.com/user-attachments/assets/b563fd24-fb06-464e-af6d-719658db98d3" />
 
 
