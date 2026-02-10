@@ -1,6 +1,6 @@
 # Veloce Motors - Premium Automotive Website
 
-**A high-performance, responsive frontend website designed for a luxury automobile brand. **
+**A high-performance, responsive frontend website designed for a luxury automobile brand.**
 
 This project demonstrates a premium UI/UX design, featuring a custom 3D javascript slider, dynamic content rendering, and client-side form validation, built entirely HTML,BootStrap CSS, Vanilla JavaScript.
 
