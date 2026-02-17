@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- DATA: 6 Car Models ---
     const carData = [
         {
@@ -54,23 +54,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. POPULATE CAROUSEL (Index Page) ---
     const carouselContent = document.getElementById('carousel-content');
-    if (carouselContent) {
-        // We need to group items for the carousel logic (3 per slide for desktop)
-        // Note: For a simpler pure JS approach without complex swipe logic, 
-        // we will render single slides that contain a Grid of 3 on Desktop, 1 on Mobile.
-        
-        // Simple logic: Create 2 slides, each containing 3 cars (for desktop view)
+
+    const renderCarousel = () => {
+        if (!carouselContent) return;
+
+        // Responsive Chunking: 1 for mobile (<768px), 3 for desktop
+        const isMobile = window.innerWidth < 768;
+        const chunkSize = isMobile ? 1 : 3;
+
         let html = '';
-        
-        // Chunk array into groups of 3
-        const chunkSize = 3;
+
         for (let i = 0; i < carData.length; i += chunkSize) {
             const chunk = carData.slice(i, i + chunkSize);
             const isActive = i === 0 ? 'active' : '';
-            
+
             html += `<div class="carousel-item ${isActive}">
                         <div class="row g-4 justify-content-center">`;
-            
+
             chunk.forEach(car => {
                 html += `
                     <div class="col-md-4">
@@ -90,7 +90,17 @@ document.addEventListener('DOMContentLoaded', () => {
                      </div>`;
         }
         carouselContent.innerHTML = html;
-    }
+    };
+
+    // Initial Render
+    renderCarousel();
+
+    // Re-render on resize (debounced slightly for performance, or simple implementation)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(renderCarousel, 250);
+    });
 
     // --- 2. POPULATE DETAILS PAGE (Model Details Page) ---
     const detailsContainer = document.getElementById('details-container');
@@ -147,14 +157,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (link.getAttribute('href') === currentPage) link.classList.add('active');
     });
 
-    // --- 4. Login Logic (Existing) ---
+    // --- 4. Login Logic (Mock Simulation) ---
     const authLinkContainer = document.getElementById('auth-link');
+    /* 
+       SECURITY NOTE: 
+       Client-side authentication is INSECURE. This is a demo only.
+       In a real app, this must validate against a server-side API.
+    */
     if (localStorage.getItem('isLoggedIn') === 'true' && authLinkContainer) {
         authLinkContainer.innerHTML = '<a class="nav-link btn btn-outline-light ms-lg-3 px-3" href="#" id="logoutBtn">Log Out</a>';
         document.getElementById('logoutBtn').addEventListener('click', (e) => {
             e.preventDefault();
             localStorage.removeItem('isLoggedIn');
-            window.location.href = 'index.html';
+            window.location.reload();
         });
     }
 
@@ -162,12 +177,55 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            if (document.getElementById('username').value === 'admin' && document.getElementById('password').value === '1234') {
+            const email = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            // Mock Validation: simple integrity check (no hardcoded secrets)
+            if (email && pass) {
+                // Determine user role based on email for demo purposes (optional)
                 localStorage.setItem('isLoggedIn', 'true');
+                alert('Login Successful! (Demo Mode)');
                 window.location.href = 'index.html';
             } else {
-                alert('Invalid credentials');
+                alert('Please enter valid credentials.');
             }
+        });
+    }
+
+    // --- 5. Contact Form Logic ---
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const btn = contactForm.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+
+            // 1. Disable button to prevent double-submit
+            btn.disabled = true;
+            btn.innerHTML = 'Sending... <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+
+            // 2. Simulate API Call
+            setTimeout(() => {
+                // 3. Show Success Message
+                const alertBox = document.getElementById('contactAlert');
+                if (alertBox) {
+                    alertBox.textContent = `Thank you, ${document.getElementById('fullName').value}. We will contact you shortly.`;
+                    alertBox.className = 'alert alert-success fade-in-up';
+                    alertBox.classList.remove('d-none');
+                }
+
+                // 4. Reset Form & Button
+                contactForm.reset();
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+
+                // 5. Hide Alert after 5 seconds
+                setTimeout(() => {
+                    if (alertBox) alertBox.classList.add('d-none');
+                }, 5000);
+
+            }, 1500); // 1.5s delay simulation
         });
     }
 });
